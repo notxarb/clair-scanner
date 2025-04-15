@@ -40,7 +40,7 @@ jobs:
           mkdir -p dist
           output_name=clair-scanner_${GOOS}-${GOARCH}
           [ "$GOOS" = "windows" ] && output_name+=".exe"
-          go build -o dist/$output_name
+          CGO_ENABLED=0 go build -o dist/$output_name
 
       # Step 5: Upload binaries as artifacts for inspection
       - name: Upload binaries
